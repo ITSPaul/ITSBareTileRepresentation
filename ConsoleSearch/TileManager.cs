@@ -210,6 +210,7 @@ namespace TileManagerNS
         List<TileRef> _tileRefs;
         private List<Tile> impassable = new List<Tile>();
         private List<Tile> passable = new List<Tile>();
+        private List<Tile> tileList = new List<Tile>();
         public List<TileRef> TileRefs
         {
             get
@@ -246,6 +247,20 @@ namespace TileManagerNS
                 passable = value;
             }
         }
+
+        public List<Tile> TileList
+        {
+            get
+            {
+                return tileList;
+            }
+
+            set
+            {
+                tileList = value;
+            }
+        }
+
         // Get Tile at X Y
         public Tile getPassableTileAt(int X,int Y)
         {
@@ -478,7 +493,11 @@ namespace TileManagerNS
                 else passable.Add(t);
         }
 
-            
+        public void makeTileList()
+        {
+            foreach (Tile t in Tiles)
+                tileList.Add(t);
+        }  
 
     }
 }

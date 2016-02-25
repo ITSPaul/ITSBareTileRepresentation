@@ -55,6 +55,7 @@ namespace ConsoleSearch
                 backTileNames, tileMap, _tileRefs, tileWidth, tileHeight);
             _tileManager.ActiveLayer = _tileManager.getLayer("background");
             _tileManager.ActiveLayer.makeImpassable(impassibleTiles);
+            _tileManager.ActiveLayer.makeTileList();
             _tileManager.CurrentTile = _tileManager.ActiveLayer.Tiles[0, 0];
 
             // The 2D Tile map is turned into a collection Tiles in Lists
