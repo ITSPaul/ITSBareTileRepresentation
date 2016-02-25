@@ -58,7 +58,14 @@ namespace ConsoleSearch
             _tileManager.ActiveLayer.makeTileList();
             _tileManager.CurrentTile = _tileManager.ActiveLayer.Tiles[0, 0];
 
-            writeTileList();
+            Tile Start = _tileManager.CurrentTile;
+            Tile Finish = _tileManager.ActiveLayer.TileList.Where(t => t.TileName == "home").Single();
+            Stack<Tile> frontier = new Stack<Tile>();
+            frontier.Push(Start);
+            TileEqComparer compare = new TileEqComparer();
+            List<Tile> Solution = dfs(compare, frontier, new List<Tile>(), Start, Finish);
+
+            //writeTileList();
             // The 2D Tile map is turned into a collection Tiles in Lists
             // write a method that will write out all the tiles and their contents 
             // to the screen in order 00 to tileWidth, tileHeight
@@ -79,6 +86,33 @@ namespace ConsoleSearch
 
             }
             Console.ReadKey();
+        }
+        
+        private static List<Tile> dfs(TileEqComparer comparer, 
+                            Stack<Tile> frontier, List<Tile> Visited, Tile Current, Tile Goal)
+        {
+            if (!Visited.Contains(Current, comparer))
+                Visited.Add(Current);
+
+            if (frontier.Count == 0)
+                return null; // run out of options no solution
+            // explore the frontier
+            Tile next = frontier.Pop();
+            if (next == Goal) { Visited.Add(Goal); return Visited; }
+            else {
+               
+                List<Tile> neighbours = 
+                    _tileManager.ActiveLayer.adjacentTo(Current)
+                    .Where(n => !Visited.Contains(n, comparer))
+                    .Reverse() // as first one to be explored is 
+                    .ToList();
+                // add to the frontier
+                foreach (Tile t in neighbours)
+                    frontier.Push(t);
+
+                    dfs(comparer, frontier, Visited, next, Goal);
+                }
+            return null;
         }
     }
 }
