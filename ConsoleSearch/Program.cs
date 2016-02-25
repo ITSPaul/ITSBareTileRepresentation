@@ -39,10 +39,10 @@ namespace ConsoleSearch
         #endregion
         private static List<TileRef> _tileRefs = new List<TileRef>();
         private static List<Tile> _path = new List<Tile>();
-
+        private static TileManager _tileManager;
         static void Main(string[] args)
         {
-            TileManager _tileManager = new TileManager();
+             _tileManager = new TileManager();
             _tileRefs.Add(new TileRef(4, 2, 0));
             _tileRefs.Add(new TileRef(3, 3, 1));
             _tileRefs.Add(new TileRef(6, 3, 2));
@@ -58,11 +58,27 @@ namespace ConsoleSearch
             _tileManager.ActiveLayer.makeTileList();
             _tileManager.CurrentTile = _tileManager.ActiveLayer.Tiles[0, 0];
 
+            writeTileList();
             // The 2D Tile map is turned into a collection Tiles in Lists
             // write a method that will write out all the tiles and their contents 
             // to the screen in order 00 to tileWidth, tileHeight
             // Write a Method that will list all the impassable Tiles
-            // Write a Method that will list all the 
+            // Write a Method that will list all the passable
+            // Write a Method that will list all tiles of a name tile type
+        }
+
+        private static void writeTileList()
+        {
+            List<Tile> orderedTiles = _tileManager.ActiveLayer.TileList
+                .Take(20)
+                .ToList();
+
+            foreach (Tile t in orderedTiles)
+            {
+                Console.WriteLine("Tile is {0}", t.ToString());
+
+            }
+            Console.ReadKey();
         }
     }
 }

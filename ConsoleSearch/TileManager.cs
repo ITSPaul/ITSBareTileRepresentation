@@ -98,6 +98,16 @@ namespace TileManagerNS
 
     public class Tile 
     {
+        public override string ToString()
+        {
+            return String.Concat(
+                "Tile Name  " + TileName + 
+                " x " + X.ToString() +
+                " y " + Y.ToString() +
+                " Passable " + Passable.ToString()
+                );
+        }
+
         int _tileWidth;
         int _tileHeight;
         int scale = 1;
