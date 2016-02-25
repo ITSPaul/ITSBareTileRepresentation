@@ -57,8 +57,9 @@ namespace ConsoleSearch
             _tileManager.ActiveLayer.makeImpassable(impassibleTiles);
             _tileManager.CurrentTile = _tileManager.ActiveLayer.Tiles[0, 0];
 
+            // The 2D Tile map is turned into a collection Tiles in Lists
             // write a method that will write out all the tiles and their contents 
-            // to the screen
+            // to the screen in order 00 to tileWidth, tileHeight
             // Write a Method that will list all the impassable Tiles
             // Write a Method that will list all the 
         }
