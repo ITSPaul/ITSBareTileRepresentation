@@ -21,9 +21,9 @@ namespace ConsoleSearch
         {1,1,1,1,1,1,1,1,1,1,1,3,2,2,2,2,2,2,3,2,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
         {1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2},
         {2,2,2,2,2,2,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2},
-        {2,2,2,2,2,2,0,0,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2},
+        {2,2,2,2,2,2,0,0,1,1,4,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2},
         {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,2,0,0,0,0,0,2,0,0,0,0,2,0,0,0,2,0,0,0,2,2,2,2,3,2,2,2,2},
-        {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
+        {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4},
         {2,2,2,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
         {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,1,1,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,2},
         {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
@@ -32,7 +32,7 @@ namespace ConsoleSearch
         {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,1,1,2,2,2,4,1,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
         {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,2,2,2,1,1,2,2,2,2,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
         {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
-        {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
+        {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,4,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
         {2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,3,2,2,2,2,2,3,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
         {2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2},
     };
@@ -58,14 +58,19 @@ namespace ConsoleSearch
             _tileManager.ActiveLayer.makeTileList();
             _tileManager.CurrentTile = _tileManager.ActiveLayer.Tiles[0, 0];
 
+            // Pick the start Tile
             Tile Start = _tileManager.CurrentTile;
-            Tile Finish = _tileManager.ActiveLayer.TileList.Where(t => t.TileName == "home").Single();
+            // Pick the first tile there are a number of Home tiles here
+            Tile Finish = _tileManager.ActiveLayer.TileList.Where(t => t.TileName == "home").First();
             Stack<Tile> frontier = new Stack<Tile>();
             frontier.Push(Start);
+            // Tile equality comparer needed for linq contains method and other 
+            // link functionality
             TileEqComparer compare = new TileEqComparer();
-            List<Tile> Solution = dfs(compare, frontier, new List<Tile>(), Start, Finish);
+            int count = 0;
+            List<Tile> Solution = dfs(compare, frontier, new List<Tile>(), Start, Finish, ref count );
 
-            //writeTileList();
+            writeTileList(Solution);
             // The 2D Tile map is turned into a collection Tiles in Lists
             // write a method that will write out all the tiles and their contents 
             // to the screen in order 00 to tileWidth, tileHeight
@@ -74,22 +79,26 @@ namespace ConsoleSearch
             // Write a Method that will list all tiles of a name tile type
         }
 
-        private static void writeTileList()
+        private static void writeTileList(List<Tile> list)
         {
-            List<Tile> orderedTiles = _tileManager.ActiveLayer.TileList
-                .Take(20)
-                .ToList();
 
-            foreach (Tile t in orderedTiles)
+            int count = 0;
+            Console.WriteLine("------------------------------------->");
+            foreach (Tile t in list)
             {
-                Console.WriteLine("Tile is {0}", t.ToString());
-
+                Console.WriteLine("{0}", t.ToString());
+                if (count++ >= 20)
+                {
+                    count = 0;
+                    Console.ReadKey();
+                }
             }
+            Console.WriteLine("------------------------------------->");
             Console.ReadKey();
         }
         
         private static List<Tile> dfs(TileEqComparer comparer, 
-                            Stack<Tile> frontier, List<Tile> Visited, Tile Current, Tile Goal)
+                            Stack<Tile> frontier, List<Tile> Visited, Tile Current, Tile Goal, ref int level)
         {
             if (!Visited.Contains(Current, comparer))
                 Visited.Add(Current);
@@ -100,19 +109,36 @@ namespace ConsoleSearch
             Tile next = frontier.Pop();
             if (next == Goal) { Visited.Add(Goal); return Visited; }
             else {
-               
+               // only dealing with passable tiles for realism
+               // discounting those Tiles (states) already visited 
                 List<Tile> neighbours = 
-                    _tileManager.ActiveLayer.adjacentTo(Current)
+                    _tileManager.ActiveLayer.adjacentPassable(Current)
                     .Where(n => !Visited.Contains(n, comparer))
-                    .Reverse() // as first one to be explored is 
                     .ToList();
+                debugPrint(Current, next, Visited, neighbours,level);
+                
                 // add to the frontier
                 foreach (Tile t in neighbours)
                     frontier.Push(t);
-
-                    dfs(comparer, frontier, Visited, next, Goal);
+                level++;
+                    return dfs(comparer, frontier, Visited, next, Goal, ref level);
                 }
-            return null;
+            
         }
+
+        private static void debugPrint(Tile current, Tile next, List<Tile> visited, List<Tile> neighbours, int level)
+        {
+            Console.WriteLine("Current");
+            Console.WriteLine("{0}", current.ToString());
+            Console.WriteLine("Next");
+            Console.WriteLine("{0}", next.ToString());
+            Console.WriteLine("Visited so Far");
+            writeTileList(visited);
+            Console.WriteLine("At Level {0}", level.ToString());
+            Console.WriteLine("New Neighbours not already visited");
+            writeTileList(neighbours);
+
+        }
+
     }
 }

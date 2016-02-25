@@ -101,10 +101,10 @@ namespace TileManagerNS
         public override string ToString()
         {
             return String.Concat(
-                "Tile Name  " + TileName + 
+               "Tile Name  " + TileName + 
                 " x " + X.ToString() +
-                " y " + Y.ToString() +
-                " Passable " + Passable.ToString()
+                " y " + Y.ToString() 
+                //" Passable " + Passable.ToString()
                 );
         }
 
